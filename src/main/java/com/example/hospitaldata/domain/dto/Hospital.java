@@ -20,7 +20,7 @@ public class Hospital {
     private LocalDateTime licenseDate;
     private int businessStatus;;
     private int businessStatusCode;
-    private int phone;
+    private String phone;
     private String fullAddress;
     private String roadNameAddress;
     private String hospitalName;

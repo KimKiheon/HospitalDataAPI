@@ -8,6 +8,7 @@ class HospitalDataApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 }
