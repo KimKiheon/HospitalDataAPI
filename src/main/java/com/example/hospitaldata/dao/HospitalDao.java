@@ -15,7 +15,6 @@ public class HospitalDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-
     public void add(Hospital hospital){
         this.jdbcTemplate.update("insert into hospitals (id, open_service_name, open_local_government_code, " +
                         "management_number, license_date, business_status, business_status_code, phone " +
