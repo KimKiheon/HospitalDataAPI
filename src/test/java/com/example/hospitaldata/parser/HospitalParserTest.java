@@ -36,7 +36,7 @@ class HospitalParserTest {
     void add() {
         HospitalParser hp = new HospitalParser();
         Hospital hospital = hp.parse((line1));
-        HospitalDao.add(hospital);
+        hospitalDao.add(hospital);
     }
 
     @Test
