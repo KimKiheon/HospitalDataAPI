@@ -2,7 +2,11 @@ package com.example.hospitaldata.dao;
 
 import com.example.hospitaldata.domain.dto.Hospital;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 @Component
 public class HospitalDao {
@@ -10,6 +14,7 @@ public class HospitalDao {
     public HospitalDao(JdbcTemplate jdbcTemplate){
         this.jdbcTemplate = jdbcTemplate;
     }
+
 
     public void add(Hospital hospital){
         this.jdbcTemplate.update("insert into hospitals (id, open_service_name, open_local_government_code, " +
@@ -21,5 +26,9 @@ public class HospitalDao {
                 hospital.getFullAddress(), hospital.getRoadNameAddress(), hospital.getHospitalName(), hospital.getBusinessTypeName(), hospital.getHealthcareProviderCount(),
                 hospital.getPatientRoomCount(), hospital.getTotalNumberOfBeds(), hospital.getTotalAreaSize());
     }
+    public void deleteAll(){
+        this.jdbcTemplate.update("delete from hospitals");
+    }
+
 
 }
