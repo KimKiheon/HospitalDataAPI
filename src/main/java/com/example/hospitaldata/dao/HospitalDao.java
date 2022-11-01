@@ -29,6 +29,9 @@ public class HospitalDao {
     public void deleteAll(){
         this.jdbcTemplate.update("delete from hospitals");
     }
+    public int getCount(){
+        return this.jdbcTemplate.queryForObject("select count(*) from hospitals;", Integer.class);
+    }
 
 
 }
