@@ -2,6 +2,7 @@ package com.example.hospitaldata.parser;
 
 import com.example.hospitaldata.dao.HospitalDao;
 import com.example.hospitaldata.domain.Hospital;
+import com.example.hospitaldata.service.HospitalService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,8 @@ class HospitalParserTest {
     ReadLineContext<Hospital> hospitalReadLineContext;
     @Autowired
     HospitalDao hospitalDao;
+    @Autowired
+    HospitalService hospitalService;
 
     @Test
     @DisplayName("insert 잘 되는지")
@@ -36,6 +39,17 @@ class HospitalParserTest {
         Hospital hospital = hp.parse((line1));
         hospitalDao.add(hospital);
     }
+    @Test
+    @DisplayName("10만건 이상 데이터가 파싱 되는지")
+    void oneHundreadThousandRows() throws IOException {
+        hospitalDao.deleteAll();
+        String filename = "C:\\Users\\admin\\Desktop\\의원_UTF8.txt";
+        int cnt = this.hospitalService.insertLargeVolumeHospitalData(filename);
+        assertTrue(cnt > 1000);
+        assertTrue(cnt > 10000);
+        System.out.printf("파싱된 데이터 개수:%d", cnt);
+    }
+
 
     @Test
     void name() throws IOException {
