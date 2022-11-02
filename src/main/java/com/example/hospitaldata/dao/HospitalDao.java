@@ -1,12 +1,9 @@
 package com.example.hospitaldata.dao;
 
-import com.example.hospitaldata.domain.dto.Hospital;
+import com.example.hospitaldata.domain.Hospital;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 @Component
 public class HospitalDao {

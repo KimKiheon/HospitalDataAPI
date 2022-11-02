@@ -1,9 +1,8 @@
 package com.example.hospitaldata.parser;
 
-import com.example.hospitaldata.domain.dto.Hospital;
+import com.example.hospitaldata.domain.Hospital;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
 
 public class HospitalParser implements  Parser<Hospital> {
     @Override

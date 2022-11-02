@@ -1,6 +1,6 @@
 package com.example.hospitaldata.parser;
 
-import com.example.hospitaldata.domain.dto.Hospital;
+import com.example.hospitaldata.domain.Hospital;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

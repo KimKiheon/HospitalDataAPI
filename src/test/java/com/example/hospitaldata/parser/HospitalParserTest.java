@@ -1,9 +1,7 @@
 package com.example.hospitaldata.parser;
 
 import com.example.hospitaldata.dao.HospitalDao;
-import com.example.hospitaldata.domain.dto.Hospital;
-import com.example.hospitaldata.parser.HospitalParser;
-import com.example.hospitaldata.parser.ReadLineContext;
+import com.example.hospitaldata.domain.Hospital;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
