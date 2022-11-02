@@ -33,32 +33,4 @@ public class Hospital {
         return businessStatus == 3 || businessStatusCode == 3;
     }
 
-    public String getInsertQuery(){
-        String sql = String.format("insert into hospitals (id, open_service_name, open_local_government_code, " +
-                        "management_number, license_date, business_status, business_status_code, phone " +
-                        "full_address, road_name_address, hospital_name, business_type_name, healthcare_provider_count, " +
-                        "patient_room_count, total_number_of_beds, total_area_size)" +
-                        "values \n" +
-                        "(\"%s\", \n" +
-                        "\"%s\", \n" +
-                        "\"%s\", \n" +
-                        "\"%s\", \n" +
-                        "\"%s\", \n" +
-                        "\"%s\", \n" +
-                        "\"%s\", \n" +
-                        "\"%s\", \n" +
-                        "\"%s\", \n" +
-                        "\"%s\", \n" +
-                        "\"%s\", \n" +
-                        "\"%s\", \n" +
-                        "\"%s\", \n" +
-                        "\"%s\", \n" +
-                        "\"%s\", \n" +
-                        "\"%s\");",this.id, this.openServiceName, this.openLocalGovernmentCode,
-                this.managementNumber, this.licenseDate, this.businessStatus,this.businessStatusCode,this.phone,
-                this.fullAddress, this.roadNameAddress, this.hospitalName, this.businessTypeName, this.healthcareProviderCount,
-                this.patientRoomCount, this.totalNumberOfBeds, this.totalAreaSize);
-        return sql;
-    }
-
 }

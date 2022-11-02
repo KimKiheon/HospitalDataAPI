@@ -18,7 +18,11 @@ public class HospitalParser implements  Parser<Hospital> {
         int year = Integer.parseInt(row[5].substring(0, 4));
         int month = Integer.parseInt(row[5].substring(4, 6));
         int day = Integer.parseInt(row[5].substring(6));
-        hospital.setLicenseDate(LocalDateTime.of(year, month, day, 0, 0, 0));
+        try {
+            hospital.setLicenseDate(LocalDateTime.of(year, month, day, 0, 0, 0));
+        } catch (Exception e) {
+            hospital.setLicenseDate(LocalDateTime.of(year, 1, 1, 0, 0, 0));
+        }
 
         hospital.setBusinessStatus(Integer.parseInt(row[7]));
         hospital.setBusinessStatusCode(Integer.parseInt(row[9]));
@@ -27,10 +31,18 @@ public class HospitalParser implements  Parser<Hospital> {
         hospital.setRoadNameAddress(row[19]);
         hospital.setHospitalName(row[21]);
         hospital.setBusinessTypeName(row[25]);
-        hospital.setHealthcareProviderCount(Integer.parseInt(row[29]));
-        hospital.setPatientRoomCount(Integer.parseInt(row[30]));
-        hospital.setTotalNumberOfBeds(Integer.parseInt(row[31]));
-        hospital.setTotalAreaSize(Float.parseFloat(row[32].replace("\"", "")));
+        hospital.setHealthcareProviderCount(0);
+        hospital.setPatientRoomCount(0);
+        hospital.setTotalNumberOfBeds(0);
+        hospital.setTotalAreaSize(0);
+
+        if(!row[29].equals("")) hospital.setHealthcareProviderCount(Integer.parseInt(row[29]));
+
+        if(!row[30].equals("")) hospital.setPatientRoomCount(Integer.parseInt(row[30]));
+
+        if(!row[31].equals("")) hospital.setTotalNumberOfBeds(Integer.parseInt(row[31]));
+
+        if(!row[32].equals("")) hospital.setTotalAreaSize(Float.parseFloat(row[32]));
 
         return hospital;
     }
