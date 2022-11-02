@@ -15,9 +15,9 @@ public class HospitalResDTO {
 
     public static HospitalResDTO from(Hospital hospital){
         HospitalResDTO dto = new HospitalResDTO();
-        dto.hospitalName=getHospitalName();
-        dto.fullAddress=getFullAddress();
-        dto.roadNameAddress=getRoadNameAddress();
+        dto.hospitalName=hospital.getHospitalName();
+        dto.fullAddress=hospital.getFullAddress();
+        dto.roadNameAddress=hospital.getRoadNameAddress();
         dto.healthcareProviderCount = hospital.getHealthcareProviderCount();
         dto.patientRoomCount = hospital.getPatientRoomCount();
         dto.totalAreaSize = hospital.getTotalAreaSize();
