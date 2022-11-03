@@ -17,7 +17,7 @@ public class HospitalController {
     }
     @GetMapping("/")
     public String Hello() {
-        return "Hello World11";
+        return "Connection Test";
     }
 
 
