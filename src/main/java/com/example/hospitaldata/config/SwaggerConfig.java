@@ -1,4 +1,4 @@
-package com.example.hospitaldata;
+package com.example.hospitaldata.config;
 
 
 import org.springframework.context.annotation.Bean;

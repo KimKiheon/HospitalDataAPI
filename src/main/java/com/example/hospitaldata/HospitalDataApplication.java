@@ -24,12 +24,12 @@ public class HospitalDataApplication {
         List<Hospital> hospitals = hospitalReadLineContext.readByLine("C:\\Users\\admin\\Desktop\\의원_UTF8.txt");
         long start = System.currentTimeMillis();
         //약 25 분 소요
-        for (Hospital hospital : hospitals) {
-            hospitalDao.add(hospital);
-        }*/
+        //for (Hospital hospital : hospitals) {
+        //    hospitalDao.add(hospital);
+        //}
 
         //thread 적용 :178 초
-        /*List<Thread> threads = new ArrayList<>();
+        List<Thread> threads = new ArrayList<>();
         for (int i = 0; i < THREAD_COUNT; i++) {
             int total = hospitals.size();
             int unit = total / THREAD_COUNT;
@@ -67,8 +67,8 @@ public class HospitalDataApplication {
             for (int i = fromIdx; i < toIdx; i++) {
                 dao.add(hospitals.get(i));
             }
-        }
+        }*/
 
-    */
+
     }
 }

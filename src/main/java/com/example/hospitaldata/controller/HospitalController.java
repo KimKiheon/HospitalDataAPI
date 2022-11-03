@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class HospitalController {
     private final HospitalDao hospitaldao;
-    @GetMapping("/{id}")
+    @GetMapping("/hospital/{id}")
     public ResponseEntity<HospitalResDTO> findById(@PathVariable("id")int id){
         return ResponseEntity.ok(HospitalResDTO
                 .from(hospitaldao.findById(id)));
     }
-    @GetMapping("/")
+    @GetMapping("/hospital")
     public String Hello() {
         return "Connection Test";
     }
