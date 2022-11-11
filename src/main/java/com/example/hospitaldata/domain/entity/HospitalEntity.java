@@ -16,4 +16,6 @@ import javax.persistence.Table;
 public class HospitalEntity {
     @Id
     private Integer id;
+    private String hospitalName;
+    private String fullAddress;
 }

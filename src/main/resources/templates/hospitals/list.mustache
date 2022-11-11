@@ -1,0 +1,18 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">병원</th>
+        <th scope="col">주소</th>
+    </tr>
+    </thead>
+    <tbody class="table-group-divider">
+    {{#hospitals}}
+        <tr>
+            <th>{{id}}</th>
+            <td><a href="/articles/{{id}}"{{id}}">{{hospitalName}}</a></td>
+            <td>{{fullAddress}}</td>
+        </tr>
+    {{/hospitals}}
+    </tbody>
+</table>
