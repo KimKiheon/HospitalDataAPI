@@ -19,7 +19,7 @@ public class HospitalDataApplication {
 
     public static void main(String[] args) throws IOException {
         ConfigurableApplicationContext context = SpringApplication.run(HospitalDataApplication.class, args);
-       /* ReadLineContext<Hospital> hospitalReadLineContext = (ReadLineContext<Hospital>) context.getBean("hospitalReadLineContext");
+        /*ReadLineContext<Hospital> hospitalReadLineContext = (ReadLineContext<Hospital>) context.getBean("hospitalReadLineContext");
         HospitalDao hospitalDao = context.getBean(HospitalDao.class);
         List<Hospital> hospitals = hospitalReadLineContext.readByLine("C:\\Users\\admin\\Desktop\\의원_UTF8.txt");
         long start = System.currentTimeMillis();
@@ -27,6 +27,7 @@ public class HospitalDataApplication {
         //for (Hospital hospital : hospitals) {
         //    hospitalDao.add(hospital);
         //}
+
 
         //thread 적용 :178 초
         List<Thread> threads = new ArrayList<>();
@@ -67,7 +68,9 @@ public class HospitalDataApplication {
             for (int i = fromIdx; i < toIdx; i++) {
                 dao.add(hospitals.get(i));
             }
-        }*/
+        }
+        */
+
 
 
     }

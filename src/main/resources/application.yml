@@ -1,8 +1,16 @@
-spring:
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher
-  profiles:
-    include:
-      - db
+server:
+  servlet:
+    encoding:
+      force-response: true
 
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://ec2-13-125-212-100.ap-northeast-2.compute.amazonaws.com:3306/likelion-db
+    username: root
+    password: trewq96
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    database: mysql
+    hibernate.ddl-auto: update
