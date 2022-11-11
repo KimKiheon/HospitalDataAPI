@@ -1,15 +1,15 @@
 package com.example.hospitaldata.parser;
 
-import com.example.hospitaldata.domain.Hospital;
+import com.example.hospitaldata.domain.dto.HospitalDTO;
 
 import java.time.LocalDateTime;
 
-public class HospitalParser implements  Parser<Hospital> {
+public class HospitalParser implements  Parser<HospitalDTO> {
     @Override
-    public Hospital parse(String str) {
+    public HospitalDTO parse(String str) {
         String[] row = str.split("\",\"");
 
-        Hospital hospital = new Hospital();
+        HospitalDTO hospital = new HospitalDTO();
         hospital.setId(Integer.parseInt(row[0].replace("\"", "")));
         hospital.setOpenServiceName(row[1]);
         hospital.setOpenLocalGovernmentCode(Integer.parseInt(row[3]));

@@ -1,6 +1,5 @@
 package com.example.hospitaldata.domain.dto;
 
-import com.example.hospitaldata.domain.Hospital;
 import lombok.Getter;
 
 @Getter
@@ -13,7 +12,7 @@ public class HospitalResDTO {
     private float totalAreaSize;
     private boolean shutDown;
 
-    public static HospitalResDTO from(Hospital hospital){
+    public static HospitalResDTO from(HospitalDTO hospital){
         HospitalResDTO dto = new HospitalResDTO();
         dto.hospitalName=hospital.getHospitalName();
         dto.fullAddress=hospital.getFullAddress();

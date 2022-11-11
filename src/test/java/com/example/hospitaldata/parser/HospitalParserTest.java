@@ -1,7 +1,9 @@
 package com.example.hospitaldata.parser;
 
 import com.example.hospitaldata.dao.HospitalDao;
-import com.example.hospitaldata.domain.Hospital;
+import com.example.hospitaldata.domain.dto.HospitalDTO;
+import com.example.hospitaldata.domain.entity.HospitalEntity;
+import com.example.hospitaldata.domain.repositiory.HospitalRepository;
 import com.example.hospitaldata.service.HospitalService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -26,17 +29,26 @@ class HospitalParserTest {
     String line1 = "\"1\",\"의원\",\"01_01_02_P\",\"3620000\",\"PHMA119993620020041100004\",\"19990612\",\"\",\"01\",\"영업/정상\",\"13\",\"영업중\",\"\",\"\",\"\",\"\",\"062-515-2875\",\"\",\"500881\",\"광주광역시 북구 풍향동 565번지 4호 3층\",\"광주광역시 북구 동문대로 24, 3층 (풍향동)\",\"61205\",\"효치과의원\",\"20211115113642\",\"U\",\"2021-11-17 02:40:00.0\",\"치과의원\",\"192630.735112\",\"185314.617632\",\"치과의원\",\"1\",\"0\",\"0\",\"52.29\",\"401\",\"치과\",\"\",\"\",\"\",\"0\",\"0\",\"\",\"\",\"0\",\"\",";
 
     @Autowired
-    ReadLineContext<Hospital> hospitalReadLineContext;
+    ReadLineContext<HospitalDTO> hospitalReadLineContext;
     @Autowired
     HospitalDao hospitalDao;
     @Autowired
     HospitalService hospitalService;
+    @Autowired
+    HospitalRepository hospitalRepository;
+    @Test
+    void findById(){
+        Optional<HospitalEntity> hospital = hospitalRepository.findById(1);
+        HospitalEntity hp = hospital.get();
+        System.out.println(hp.getId());
+        assertEquals(1,hp.getId());
+    }
 
     @Test
     @DisplayName("insert 잘 되는지")
     void add() {
         HospitalParser hp = new HospitalParser();
-        Hospital hospital = hp.parse((line1));
+        HospitalDTO hospital = hp.parse((line1));
         hospitalDao.add(hospital);
     }
     @Test
@@ -56,7 +68,7 @@ class HospitalParserTest {
         //서버 환경에서 빌드시 문제
         //어디에서든지 실행할 수 있게 짜는 것이 목표
         String filename = "C:\\Users\\admin\\Desktop\\의원_UTF8.txt";
-        List<Hospital> hospitalList = hospitalReadLineContext.readByLine(filename);
+        List<HospitalDTO> hospitalList = hospitalReadLineContext.readByLine(filename);
         assertTrue(hospitalList.size() > 10000);
         assertTrue(hospitalList.size() > 100000);
         for (int i = 0; i < 10; i++) {
@@ -69,7 +81,7 @@ class HospitalParserTest {
     void convertHospital() {
 
         HospitalParser hp = new HospitalParser();
-        Hospital hospital = hp.parse(line1);
+        HospitalDTO hospital = hp.parse(line1);
 
         assertEquals(1, hospital.getId()); // col:0
         assertEquals("의원", hospital.getOpenServiceName());//col:1

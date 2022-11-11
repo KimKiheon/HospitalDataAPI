@@ -1,7 +1,7 @@
 package com.example.hospitaldata.service;
 
 import com.example.hospitaldata.dao.HospitalDao;
-import com.example.hospitaldata.domain.Hospital;
+import com.example.hospitaldata.domain.dto.HospitalDTO;
 import com.example.hospitaldata.parser.ReadLineContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,10 +11,10 @@ import java.util.List;
 
 @Service
 public class HospitalService {
-    private final ReadLineContext<Hospital> hospitalReadLineContext;
+    private final ReadLineContext<HospitalDTO> hospitalReadLineContext;
     private final HospitalDao hospitalDao;
 
-    public HospitalService(ReadLineContext<Hospital> hospitalReadLineContext, HospitalDao hospitalDao) {
+    public HospitalService(ReadLineContext<HospitalDTO> hospitalReadLineContext, HospitalDao hospitalDao) {
         this.hospitalReadLineContext = hospitalReadLineContext;
         this.hospitalDao = hospitalDao;
     }
@@ -23,8 +23,8 @@ public class HospitalService {
     public int insertLargeVolumeHospitalData(String filename) {
         int cnt=0;
         try {
-            List<Hospital> hospitalList = hospitalReadLineContext.readByLine(filename);
-            for (Hospital hospital : hospitalList) {
+            List<HospitalDTO> hospitalList = hospitalReadLineContext.readByLine(filename);
+            for (HospitalDTO hospital : hospitalList) {
                 try {
                     this.hospitalDao.add(hospital);
                     cnt++;

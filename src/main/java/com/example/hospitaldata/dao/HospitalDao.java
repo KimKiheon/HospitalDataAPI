@@ -1,6 +1,6 @@
 package com.example.hospitaldata.dao;
 
-import com.example.hospitaldata.domain.Hospital;
+import com.example.hospitaldata.domain.dto.HospitalDTO;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
@@ -15,8 +15,8 @@ public class HospitalDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    RowMapper<Hospital> rowMapper = (rs, rowNum) ->
-            new Hospital(Integer.valueOf(rs.getString("id")),
+    RowMapper<HospitalDTO> rowMapper = (rs, rowNum) ->
+            new HospitalDTO(Integer.valueOf(rs.getString("id")),
                     rs.getString("open_service_name"),
                     Integer.valueOf(rs.getString("open_local_government_code")),
                     rs.getString("management_number"),
@@ -33,7 +33,7 @@ public class HospitalDao {
                     Integer.valueOf(rs.getString("total_number_of_beds")),
                     Float.valueOf(rs.getString("total_area_size")));
 
-    public void add(Hospital hospital) {
+    public void add(HospitalDTO hospital) {
         String sql = "INSERT INTO hospitals (id, open_service_name, open_local_government_code, management_number, license_date, business_status, business_status_code, phone, full_address, road_name_address, hospital_name, business_type_name, healthcare_provider_count, patient_room_count, total_number_of_beds, total_area_size)" +
                 " VALUES (?,?,?,?," +
                 " ?,?,?,?," +
@@ -55,11 +55,11 @@ public class HospitalDao {
         return this.jdbcTemplate.queryForObject("select count(*) from hospitals;", Integer.class);
     }
 
-    public Hospital findById(int id) {
+    public HospitalDTO findById(int id) {
         return jdbcTemplate.queryForObject("select *from hospitals where id = ?", rowMapper, id);
     }
 
-    public List<Hospital> findAll() {
+    public List<HospitalDTO> findAll() {
         return jdbcTemplate.query("SELECT * FROM nation_wide_hospitals", rowMapper);
     }
 

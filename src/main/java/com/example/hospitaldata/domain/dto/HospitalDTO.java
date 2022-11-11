@@ -1,4 +1,4 @@
-package com.example.hospitaldata.domain;
+package com.example.hospitaldata.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Hospital {
+public class HospitalDTO {
     private int id;
     private String openServiceName;
     private int openLocalGovernmentCode;

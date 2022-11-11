@@ -1,15 +1,10 @@
 package com.example.hospitaldata;
 
-import com.example.hospitaldata.dao.HospitalDao;
-import com.example.hospitaldata.domain.Hospital;
-import com.example.hospitaldata.parser.ReadLineContext;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 @SpringBootApplication
 public class HospitalDataApplication {
